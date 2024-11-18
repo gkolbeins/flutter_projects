@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:quiz_game_ghk/models/answer_button.dart';
+import 'package:quiz_game_ghk/answer_button.dart';
 import 'package:quiz_game_ghk/data/questions.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -10,7 +10,7 @@ class QuestionsScreen extends StatefulWidget {
   final void Function(String answer) onSelectAnswer;
  
   @override
-  State<QuestionsScreen> createState() {
+  State createState() {
     return _QuestionsScreenState();
   }
 }
@@ -20,14 +20,14 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
 
   void answerQuestion(String selectedAnswer) {
     widget.onSelectAnswer(selectedAnswer);
-  setState(() {
-    currentQuestionIndex ++;
-});
+    setState(() {
+      currentQuestionIndex++;
+    });
   }
 
   @override
-  Widget build(context) {
-      final currentQuestion = questions[currentQuestionIndex];
+  Widget build(BuildContext context) {
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -37,25 +37,28 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-           Text(
-            currentQuestion.text, 
-            style:GoogleFonts.lato(
-              color: const Color.fromARGB(255, 231, 174, 243),
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
+            Text(
+              currentQuestion.text, 
+              style: GoogleFonts.lato(
+                color: const Color.fromARGB(255, 231, 174, 243),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 30),
-          ...currentQuestion.getShuffledAnswers().map((answer) {
-            return AnswerButton(
-              answerText: answer, 
-              onTap: () {
-                answerQuestion(answer);
-              }
+            const SizedBox(height: 30),
+            ...currentQuestion.getShuffledAnswers().map((answer) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 5), // Add this line for spacing
+                child: AnswerButton(
+                  answerText: answer, 
+                  onTap: () {
+                    answerQuestion(answer);  
+                  },
+                ),
               );
-          })
-        ],
+            }).toList(),
+          ],
         ),
       ),
     );
