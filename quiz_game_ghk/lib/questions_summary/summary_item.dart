@@ -38,11 +38,11 @@ class SummaryItem extends StatelessWidget {
                 ),
                 Text(itemData['user_answer'] as String,
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 197, 164, 249),
+                      color: Color.fromARGB(255, 161, 136, 201),
                     )),
                 Text(itemData['correct_answer'] as String,
                     style: const TextStyle(
-                      color: Color.fromARGB(255, 169, 248, 239),
+                      color: Color.fromARGB(255, 119, 179, 172),
                     )),
               ],
             ),
