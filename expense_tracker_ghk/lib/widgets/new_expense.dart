@@ -51,7 +51,7 @@ class _NewExpenseState extends State<NewExpense> {
             onPressed: () {
               Navigator.pop(ctx);
             }, 
-            child: const Text('Okey'),
+            child: const Text('Ókey'),
             )
         ],
       ),
@@ -87,7 +87,7 @@ class _NewExpenseState extends State<NewExpense> {
           controller: _titleController,
           maxLength: 50,
           decoration: const InputDecoration(
-            label: Text('Title'),
+            label: Text('Heiti'),
             ),
         ),
         Row(
@@ -97,8 +97,8 @@ class _NewExpenseState extends State<NewExpense> {
           controller: _amountController,
           keyboardType: TextInputType.number,
           decoration: const InputDecoration(
-            prefixText: '\$ ',
-            label: Text('Amount'),
+            prefixText: 'ISK ',
+            label: Text('Upphæð'),
             ),
         ),
         ),
@@ -110,7 +110,7 @@ class _NewExpenseState extends State<NewExpense> {
           children: [
             Text(
               _selectedDate == null 
-              ? 'No date selceted' 
+              ? 'Ekkert valið' 
               : formatter.format(_selectedDate!),
               ),
             IconButton(
@@ -157,7 +157,7 @@ class _NewExpenseState extends State<NewExpense> {
             ),  
           ElevatedButton(
             onPressed: _submitExpenseData,
-          child: const Text('Save Expense'),
+          child: const Text('Vista'),
           ),
         ],
         ),

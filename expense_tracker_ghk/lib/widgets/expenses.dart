@@ -54,9 +54,9 @@ class _ExpensesState extends State<Expenses> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         duration: const Duration(seconds: 3),
-        content: const Text('Expense deleted'),
+        content: const Text('Útgjöldum eytt'),
         action: SnackBarAction(
-          label: 'Undo',
+          label: 'Hætta við',
           onPressed: () {
             setState(() {
               _registeredExpenses.insert(expenseIndex, expense);
@@ -70,7 +70,7 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     Widget mainContent = const Center(
-      child: Text('No expense found. Start adding some!'),
+      child: Text('Engin útgjöld finnast, byrjaðu að skrá útgjöld!'),
       );
 
       if (_registeredExpenses.isNotEmpty) {
@@ -82,7 +82,7 @@ class _ExpensesState extends State<Expenses> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter expense tracker'),
+        title: const Text('Útgjöld'),
         actions: [
           IconButton(
             onPressed: _openAddExpenseOverlay,
